@@ -1,8 +1,16 @@
 var socket = io.connect();
+socket.on('systime', function(data) {
+    console.log(data);
+	addTime(data);
+	
+})
+
+console.log("hello world");
+console.log(socket);
 
 function requestTime() {
     socket.emit('getTime', {"message": ""});
-	console.log("hello");
+	console.log("time request sent");
 }
 
 function addTime(message) {
@@ -13,8 +21,4 @@ $(function() {
     $("#getTime").click(function() {requestTime()});
 })
 
-socket.on('message', function(data) {
-    console.log(data);
-	addTime(data);
-	
-})
+

@@ -16,8 +16,8 @@ var io = require('socket.io').listen(server);
 io.sockets.on('connection', function (socket) {
     socket.on('getTime', function () {
 		var systime= new Date().getTime();
-        console.log("time:"+systime);
 		
-		socket.broadcast.emit('message', systime);
+		socket.emit('systime', systime);
+        console.log("Sent to client. Time:"+systime);
     })
 })
